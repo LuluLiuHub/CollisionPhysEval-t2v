@@ -1,17 +1,3 @@
-#!/bin/bash
-#SBATCH --job-name=sam3_stage1
-#SBATCH --partition=dgx-b200
-#SBATCH --qos=normal
-#SBATCH --nodes=1
-#SBATCH --account=jgu32-lab
-#SBATCH --cpus-per-task=16
-#SBATCH --mem=256G
-#SBATCH --gres=gpu:2
-#SBATCH --time=36:00:00
-#SBATCH --output=logs/sam3_stage1_%j.out
-#SBATCH --error=logs/sam3_stage1_%j.err
-
-
 echo "============================================"
 echo "Job ID: $SLURM_JOB_ID"
 echo "Node: $SLURM_NODELIST"
@@ -22,14 +8,14 @@ export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 export CUDA_LAUNCH_BLOCKING=0
 
 # Redirect caches away from home (home quota nearly full)
-export LAB=/vast/projects/jgu32/lab/lulu
+export LAB=xxx
 export PIP_CACHE_DIR=$LAB/pip_cache
 export CONDA_PKGS_DIRS=$LAB/conda_pkgs
 export TMPDIR=$LAB/tmp
 mkdir -p $LAB/pip_cache $LAB/conda_pkgs $LAB/tmp
 
 # Navigate to project
-cd $LAB/prj1/Inference_OP
+cd $LAB/prj1/xxx
 mkdir -p logs sam3_masks
 
 # Load CUDA module
